@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="favoriteProduct"
+            type="com.mobile.myshop.datamodel.entity.FavoriteProduct"/>
+
+        <variable
+            name="photoUrl"
+            type="String"/>
+
+        <variable
+            name="price"
+            type="Double"/>
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardElevation="@dimen/space"
+        app:cardCornerRadius="@dimen/space">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_menu_icon"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.8"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/space"
+                app:setPhotoByUrl="@{photoUrl}"/>
+
+            <TextView
+                android:fontFamily="@font/product_sans_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:layout_gravity="start"
+                android:textColor="@color/darkGray"
+                android:layout_marginLeft="@dimen/space"
+                android:layout_marginRight="@dimen/space"
+                android:lines="2"
+                android:textSize="@dimen/body_text_size"
+                android:text="@{favoriteProduct.productName}" />
+
+            <TextView
+                android:fontFamily="@font/product_sans_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/space"
+                android:textColor="@android:color/holo_green_light"
+                android:textSize="@dimen/h4_line_spacing"
+                app:setTextPrice="@{price}"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

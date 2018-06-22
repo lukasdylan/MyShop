@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/tap_to_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/space">
+
+        <ImageView
+            android:layout_width="@dimen/space_x6"
+            android:layout_height="@dimen/space_x6"
+            app:srcCompat="@drawable/vector_refresh"
+            android:tint="@color/darkGray"/>
+
+        <TextView
+            android:fontFamily="@font/product_sans_regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Failed to retrieve data. Tap to refresh"
+            android:gravity="center"
+            android:textSize="@dimen/h4_text_size"
+            android:textColor="@color/darkGray"/>
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="provinceName"
+            type="String"/>
+
+    </data>
+
+    <TextView
+        android:id="@+id/province_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/product_sans_regular"
+        android:background="?android:attr/selectableItemBackground"
+        android:textSize="@dimen/h4_text_size"
+        android:text="@{provinceName}"
+        android:padding="@dimen/space_x2"/>
+</layout>

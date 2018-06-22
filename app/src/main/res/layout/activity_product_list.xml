@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.mobile.myshop.ui.activity.ProductListActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.mobile.myshop.viewmodel.ProductListViewModel" />
+
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways|snap">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:theme="@style/AppTheme.ThemeOverlay.Dark.ActionBar.Primary"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    app:title="" />
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginRight="48dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="Semua Produk"
+                    android:textColor="@color/colorPrimary" />
+
+                <RelativeLayout
+                    android:id="@+id/searchLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:layout_below="@id/toolbar"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:paddingTop="@dimen/space"
+                    android:paddingLeft="@dimen/space_x1_half"
+                    android:paddingRight="@dimen/space_x1_half"
+                    android:paddingBottom="@dimen/space"
+                    android:visibility="@{viewModel.searchLayout}">
+
+                    <EditText
+                        android:id="@+id/searchProductET"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:background="@drawable/light_gray_rounded_background"
+                        android:drawablePadding="@dimen/space"
+                        android:drawableStart="@drawable/icon_search"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:hint="Cari berdasarkan nama atau kode produk"
+                        android:imeOptions="actionDone"
+                        android:paddingEnd="@dimen/space_x4"
+                        android:paddingLeft="@dimen/space"
+                        android:singleLine="true"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@color/gray"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/clearBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:padding="@dimen/space"
+                        android:visibility="@{viewModel.resetSearchLayout}"
+                        app:srcCompat="@drawable/vector_close" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/product_list_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <LinearLayout
+            android:id="@+id/loadingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/space_x14"
+            android:visibility="@{viewModel.loadingLayout}">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="175dp"
+                android:layout_height="100dp"
+                android:adjustViewBounds="true"
+                app:lottie_autoPlay="true"
+                app:lottie_cacheStrategy="strong"
+                app:lottie_fileName="loading.json"
+                app:lottie_loop="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/product_sans_regular"
+                android:text="Loading..."
+                android:textColor="@color/darkGray"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/filter_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/space_x2"
+            app:isShown="@{viewModel.fabLayout}"
+            app:srcCompat="@drawable/vector_filter"
+            android:onClick="@{() -> viewModel.onFabClicked()}"/>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

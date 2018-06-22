@@ -1,0 +1,145 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.mobile.myshop.viewmodel.HomeViewModel" />
+
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.mobile.myshop.ui.fragment.HomeFragment">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nested_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:paddingLeft="@dimen/space_x2"
+                    android:paddingRight="@dimen/space_x2"
+                    android:paddingTop="@dimen/space_x4"
+                    android:text="@{viewModel.greetings}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/h4_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:paddingLeft="@dimen/space_x2"
+                    android:paddingRight="@dimen/space_x2"
+                    android:text="@{viewModel.customerName}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/h2_text_size" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_x2"
+                    android:scrollbars="none" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/space"
+                    android:paddingLeft="@dimen/space_x2"
+                    android:paddingRight="@dimen/space">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="Produk Terbaru"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/h2_line_spacing" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:drawableEnd="@drawable/icon_chevron_right"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:gravity="end|center"
+                        android:onClick="@{(view) -> viewModel.onViewMoreLatestProduct()}"
+                        android:padding="@dimen/space_half"
+                        android:text="Lihat semua"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/body_text_size"
+                        android:visibility="@{viewModel.viewMoreLatestProduct}" />
+
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_newest_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/space"
+                    android:paddingLeft="@dimen/space_x2"
+                    android:paddingRight="@dimen/space">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="Favorit Anda"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/h2_line_spacing" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:drawableEnd="@drawable/icon_chevron_right"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:gravity="end|center"
+                        android:onClick="@{(view) -> viewModel.onViewMoreFavoriteProduct()}"
+                        android:padding="@dimen/space_half"
+                        android:text="Lihat semua"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/body_text_size"
+                        android:visibility="@{viewModel.viewMoreFavoriteProduct}" />
+
+                </LinearLayout>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_favorite_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none" />
+
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>

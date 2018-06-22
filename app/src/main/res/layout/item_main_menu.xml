@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="mainMenu"
+            type="com.mobile.myshop.datamodel.entity.MainMenu" />
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/root_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="@dimen/space"
+        app:cardElevation="@dimen/space_half">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/space">
+
+            <ImageView
+                android:id="@+id/iv_menu_icon"
+                android:layout_width="@dimen/space_x8"
+                android:layout_height="@dimen/space_x8"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_image"
+                android:scaleType="centerCrop"
+                android:tint="@android:color/white"
+                app:setImageFromResource="@{mainMenu.menuIcon}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/space"
+                android:fontFamily="@font/product_sans_regular"
+                android:gravity="center"
+                android:lines="2"
+                android:text="@{mainMenu.menuName}"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/body_text_size" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</layout>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.mobile.myshop.viewmodel.ShippingCostViewModel" />
+
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.mobile.myshop.ui.activity.ShippingCostActivity">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/white"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:theme="@style/AppTheme.ThemeOverlay.Dark.ActionBar.Primary"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    app:title="" />
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginRight="48dp"
+                    android:alpha="0"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:text="Cek Biaya Kirim"
+                    android:textColor="@color/colorPrimary" />
+
+            </RelativeLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/space_x2">
+
+                <TextView
+                    android:id="@+id/big_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/space_half"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:text="Cek Biaya Kirim"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/h2_text_size" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/space_half"
+                    android:layout_marginTop="@dimen/space_half"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:text="Masukkan data lokasi pengiriman pesanan anda"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/h4_text_size" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputProvinceLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/space_half"
+                    android:layout_marginTop="@dimen/space"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:hint="Provinsi"
+                    android:padding="@dimen/space_half"
+                    android:textColorHint="@color/darkGray"
+                    app:errorTextAppearance="@style/ErrorEdittext"
+                    app:hintAnimationEnabled="true">
+
+                    <EditText
+                        android:id="@+id/provinceET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/icon_drop_down"
+                        android:ellipsize="end"
+                        android:enabled="@{viewModel.uiEnable}"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:inputType="none"
+                        android:longClickable="false"
+                        android:onClick="@{(view) -> viewModel.onProvinceLayoutClicked()}"
+                        android:singleLine="true"
+                        android:text="@{viewModel.provinceText}"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:backgroundTint="@color/colorPrimary" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputCityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:hint="Kota atau Kabupaten"
+                    android:padding="5dp"
+                    android:textColorHint="@color/darkGray"
+                    android:visibility="@{viewModel.cityTextLayout}"
+                    app:errorTextAppearance="@style/ErrorEdittext"
+                    app:hintAnimationEnabled="true">
+
+                    <EditText
+                        android:id="@+id/cityET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/icon_drop_down"
+                        android:ellipsize="end"
+                        android:enabled="@{viewModel.uiEnable}"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:inputType="none"
+                        android:longClickable="false"
+                        android:onClick="@{(view) -> viewModel.onCityLayoutClicked()}"
+                        android:singleLine="true"
+                        android:text="@{viewModel.cityText}"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:backgroundTint="@color/colorPrimary" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputCourierLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:hint="Kurir"
+                    android:padding="5dp"
+                    android:textColorHint="@color/darkGray"
+                    android:visibility="@{viewModel.courierTextLayout}"
+                    app:errorTextAppearance="@style/ErrorEdittext"
+                    app:hintAnimationEnabled="true">
+
+                    <EditText
+                        android:id="@+id/courierNameET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/icon_drop_down"
+                        android:ellipsize="end"
+                        android:enabled="@{viewModel.uiEnable}"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:inputType="none"
+                        android:longClickable="false"
+                        android:onClick="@{(view) -> viewModel.onCourierLayoutClicked()}"
+                        android:singleLine="true"
+                        android:text="@{viewModel.courierText}"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:backgroundTint="@color/colorPrimary" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:id="@+id/weightLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="@{viewModel.weightTextLayout}">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/inputLayoutWeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:hint="Berat Barang"
+                        android:padding="5dp"
+                        android:textColorHint="@color/darkGray"
+                        app:errorTextAppearance="@style/ErrorEdittext"
+                        app:hintAnimationEnabled="true"
+                        app:setErrorInputText="@{viewModel.errorMessageWeight.get()}">
+
+                        <EditText
+                            android:id="@+id/weightET"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:afterTextChanged="@{(editable) -> viewModel.onInputWeight(editable)}"
+                            android:enabled="@{viewModel.uiEnable}"
+                            android:fontFamily="@font/product_sans_regular"
+                            android:imeOptions="actionDone"
+                            android:inputType="numberDecimal"
+                            android:longClickable="false"
+                            android:maxLength="5"
+                            android:textSize="16sp"
+                            app:backgroundTint="@color/colorPrimary" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/product_sans_italic"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="(dalam Kg)"
+                        android:textColor="@color/darkGray" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/calculateBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_primary"
+                    android:enabled="@{viewModel.uiEnable}"
+                    android:fontFamily="@font/product_sans_bold"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{(view) -> viewModel.loadShippingCostResult()}"
+                    android:text="Hitung biaya pengiriman"
+                    android:textColor="@android:color/white"
+                    android:visibility="@{viewModel.calculateButtonLayout}" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/shippingCostRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:visibility="@{viewModel.shippingCostResultLayout}" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</layout>
+

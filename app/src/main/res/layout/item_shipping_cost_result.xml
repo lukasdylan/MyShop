@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="serviceName"
+            type="String"/>
+
+        <variable
+            name="estimationTime"
+            type="String"/>
+
+        <variable
+            name="price"
+            type="Double"/>
+
+        <variable
+            name="image"
+            type="Integer"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="@dimen/space_x1_half">
+
+        <ImageView
+            android:id="@+id/courierLogoIV"
+            android:layout_width="60dp"
+            android:layout_height="48dp"
+            android:adjustViewBounds="true"
+            android:padding="5dp"
+            app:setImageFromResource="@{safeUnbox(image)}"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_x1_half"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/serviceNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/product_sans_regular"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/h4_text_size"
+                android:text="@{serviceName}"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_half"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/estimatedTimeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/product_sans_italic"
+                    android:gravity="start"
+                    android:textColor="@color/darkGray"
+                    android:textSize="@dimen/body_text_size"
+                    android:text="@{estimationTime}"/>
+
+                <TextView
+                    android:id="@+id/priceTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:gravity="end"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/body_text_size"
+                    app:setTextPrice="@{safeUnbox(price)}"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
